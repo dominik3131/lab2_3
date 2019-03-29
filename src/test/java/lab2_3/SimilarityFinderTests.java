@@ -140,4 +140,11 @@ public class SimilarityFinderTests {
         testIfSearchMethodWasCalledRightNumberOfTimes(seq1, seq2);
     }
 
+    @Test
+    public void shouldHaveCalledSearchMethodOneTimeWhenPassingSequenceWithOneElement() {
+        int[] seq1 = {1};
+        int[] seq2 = {1, 2, 3};
+        testIfSearchMethodWasCalledRightNumberOfTimes(seq1, seq2);
+    }
+
 }
