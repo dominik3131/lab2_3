@@ -41,6 +41,15 @@ public class SimilarityFinderTests {
         assertThat(SequenceSearcherDouble.searchedKeys.containsAll(tempVector), is(equalTo(true)));
     }
 
+    public void testIfSearchMethodWasCalledRightNumberOfTimes(int[] firstSequence, int[] secondSequence) {
+        for (int i = 0; i < firstSequence.length; i++) {
+            SequenceSearcherDouble.valuesToReturn.push(true);
+        }
+        SimilarityFinder objectUnderTest = new SimilarityFinder(new SequenceSearcherDouble());
+        objectUnderTest.calculateJackardSimilarity(firstSequence, secondSequence);
+        assertThat(SequenceSearcherDouble.callsCounter, is(equalTo(firstSequence.length)));
+    }
+
     @Test
     public void shouldReturnOneAsSimilarityForEmptySequences() {
         int[] seq1 = {};
@@ -122,6 +131,13 @@ public class SimilarityFinderTests {
         int[] seq1 = {};
         int[] seq2 = {1, 2, 3};
         testIfAllElementsHaveBeenCheckedWhileCalculatingJackadSimilarity(seq1, seq2);
+    }
+
+    @Test
+    public void shouldHaveNotCalledSearchMethodWhenPassingEmptySequence() {
+        int[] seq1 = {};
+        int[] seq2 = {1, 2, 3};
+        testIfSearchMethodWasCalledRightNumberOfTimes(seq1, seq2);
     }
 
 }
