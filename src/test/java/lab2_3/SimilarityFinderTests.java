@@ -56,7 +56,6 @@ public class SimilarityFinderTests {
 
     @Test
     public void shouldReturnOneFifth() {
-
         int[] seq1 = {1, 2, 3};
         int[] seq2 = {3, 4, 5};
         SequenceSearcherDouble.valuesToReturn.push(true);
@@ -69,6 +68,22 @@ public class SimilarityFinderTests {
     public void shouldReturnZeroWhenOneSequenceIsEmpty() {
         int[] seq1 = {1, 2, 3};
         int[] seq2 = {};
+        SequenceSearcherDouble.valuesToReturn.push(false);
+        SequenceSearcherDouble.valuesToReturn.push(false);
+        SequenceSearcherDouble.valuesToReturn.push(false);
+        testResultOfJackadSimilarity(seq1, seq2, 0);
+    }
+
+    @Test
+    public void shouldReturnZeroForLongSequencesWithNoIntersection() {
+        int[] seq1 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] seq2 = {11, 22, 33, 44, 55, 66, 77, 88, 99, 00, 111, 222, 333, 444, 555, 666};
+        SequenceSearcherDouble.valuesToReturn.push(false);
+        SequenceSearcherDouble.valuesToReturn.push(false);
+        SequenceSearcherDouble.valuesToReturn.push(false);
+        SequenceSearcherDouble.valuesToReturn.push(false);
+        SequenceSearcherDouble.valuesToReturn.push(false);
+        SequenceSearcherDouble.valuesToReturn.push(false);
         SequenceSearcherDouble.valuesToReturn.push(false);
         SequenceSearcherDouble.valuesToReturn.push(false);
         SequenceSearcherDouble.valuesToReturn.push(false);
