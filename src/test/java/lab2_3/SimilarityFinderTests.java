@@ -54,4 +54,24 @@ public class SimilarityFinderTests {
         testResultOfJackadSimilarity(seq1, seq2, 1);
     }
 
+    @Test
+    public void shouldReturnOneFifth() {
+        int[] seq1 = {1, 2, 3};
+        int[] seq2 = {3, 4, 5};
+        SequenceSearcherDouble.valuesToReturn.push(true);
+        SequenceSearcherDouble.valuesToReturn.push(false);
+        SequenceSearcherDouble.valuesToReturn.push(false);
+        testResultOfJackadSimilarity(seq1, seq2, 0.2);
+    }
+
+    @Test
+    public void shouldReturnZeroWhenOneSequenceIsEmpty() {
+        int[] seq1 = {1, 2, 3};
+        int[] seq2 = {};
+        SequenceSearcherDouble.valuesToReturn.push(false);
+        SequenceSearcherDouble.valuesToReturn.push(false);
+        SequenceSearcherDouble.valuesToReturn.push(false);
+        testResultOfJackadSimilarity(seq1, seq2, 0);
+    }
+
 }
