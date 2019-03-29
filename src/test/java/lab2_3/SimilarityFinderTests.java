@@ -29,10 +29,18 @@ public class SimilarityFinderTests {
     }
 
     @Test
-    public void shouldSayThatSimilarityIsOneForEmptySequences() {
+    public void shouldReturnOneAsSimilarityForEmptySequences() {
         int[] seq1 = {};
         int[] seq2 = {};
         testResultOfJackadSimilarity(seq1, seq2, 1);
+    }
+
+    @Test
+    public void shouldReturnZeroForSequencesWithNoIntersection() {
+        int[] seq1 = {1};
+        int[] seq2 = {0};
+        SequenceSearcherDouble.valuesToReturn.push(false);
+        testResultOfJackadSimilarity(seq1, seq2, 0);
     }
 
 }
