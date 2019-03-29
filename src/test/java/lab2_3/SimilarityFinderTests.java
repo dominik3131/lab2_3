@@ -117,4 +117,11 @@ public class SimilarityFinderTests {
         testIfAllElementsHaveBeenCheckedWhileCalculatingJackadSimilarity(seq1, seq2);
     }
 
+    @Test
+    public void shouldHaveNotCheckedAnyElementWhenPassingEmptySequence() {
+        int[] seq1 = {};
+        int[] seq2 = {1, 2, 3};
+        testIfAllElementsHaveBeenCheckedWhileCalculatingJackadSimilarity(seq1, seq2);
+    }
+
 }
