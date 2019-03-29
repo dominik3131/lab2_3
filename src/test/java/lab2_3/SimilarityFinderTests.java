@@ -110,4 +110,11 @@ public class SimilarityFinderTests {
         testIfAllElementsHaveBeenCheckedWhileCalculatingJackadSimilarity(seq1, seq2);
     }
 
+    @Test
+    public void shouldHaveCheckedEveryElementInLongSequence() {
+        int[] seq1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+        int[] seq2 = {1, 2, 3};
+        testIfAllElementsHaveBeenCheckedWhileCalculatingJackadSimilarity(seq1, seq2);
+    }
+
 }
