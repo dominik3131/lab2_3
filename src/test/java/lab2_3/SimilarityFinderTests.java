@@ -4,6 +4,8 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.Vector;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,6 +28,17 @@ public class SimilarityFinderTests {
         double delta = Math.abs(jackardSimilarity - expectedSimilarity);
         boolean result = delta < SIMILARITY_EPSILON;
         assertThat(result, is(equalTo(true)));
+    }
+
+    public void testIfAllElementsHaveBeenCheckedWhileCalculatingJackadSimilarity(int[] firstSequence, int[] secondSequence) {
+        Vector<Integer> tempVector = new Vector<>();
+        for (int i = 0; i < firstSequence.length; i++) {
+            SequenceSearcherDouble.valuesToReturn.push(true);
+            tempVector.add(firstSequence[i]);
+        }
+        SimilarityFinder objectUnderTest = new SimilarityFinder(new SequenceSearcherDouble());
+        objectUnderTest.calculateJackardSimilarity(firstSequence, secondSequence);
+        assertThat(SequenceSearcherDouble.searchedKeys.containsAll(tempVector), is(equalTo(true)));
     }
 
     @Test
@@ -88,6 +101,13 @@ public class SimilarityFinderTests {
         SequenceSearcherDouble.valuesToReturn.push(false);
         SequenceSearcherDouble.valuesToReturn.push(false);
         testResultOfJackadSimilarity(seq1, seq2, 0);
+    }
+
+    @Test
+    public void shouldHaveCheckedEveryElementInSequenceOfLengthOne() {
+        int[] seq1 = {1};
+        int[] seq2 = {1, 2, 3};
+        testIfAllElementsHaveBeenCheckedWhileCalculatingJackadSimilarity(seq1, seq2);
     }
 
 }
