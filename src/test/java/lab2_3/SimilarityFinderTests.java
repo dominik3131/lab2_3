@@ -43,4 +43,15 @@ public class SimilarityFinderTests {
         testResultOfJackadSimilarity(seq1, seq2, 0);
     }
 
+    @Test
+    public void shouldReturnOneForSequencesWithFullIntersection() {
+        int[] seq1 = {1, 2, 3, 4};
+        int[] seq2 = {1, 2, 3, 4};
+        SequenceSearcherDouble.valuesToReturn.push(true);
+        SequenceSearcherDouble.valuesToReturn.push(true);
+        SequenceSearcherDouble.valuesToReturn.push(true);
+        SequenceSearcherDouble.valuesToReturn.push(true);
+        testResultOfJackadSimilarity(seq1, seq2, 1);
+    }
+
 }
