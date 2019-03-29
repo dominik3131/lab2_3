@@ -147,4 +147,11 @@ public class SimilarityFinderTests {
         testIfSearchMethodWasCalledRightNumberOfTimes(seq1, seq2);
     }
 
+    @Test
+    public void shouldHaveCalledSearchMethodNumberOfTimesEqualToLongSequenceLength() {
+        int[] seq1 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] seq2 = {1, 2, 3};
+        testIfSearchMethodWasCalledRightNumberOfTimes(seq1, seq2);
+    }
+
 }
