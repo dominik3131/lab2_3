@@ -56,6 +56,7 @@ public class SimilarityFinderTests {
 
     @Test
     public void shouldReturnOneFifth() {
+
         int[] seq1 = {1, 2, 3};
         int[] seq2 = {3, 4, 5};
         SequenceSearcherDouble.valuesToReturn.push(true);
